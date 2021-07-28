@@ -1,0 +1,165 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Communication.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/v2/product/$metadata">
+        <edmx:Include Namespace="ProductService"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="fiori.app">
+             <Annotations Target="ProductService.Categories">
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>ID</PropertyPath>
+                        <PropertyPath>Name</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ID"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Name"/>
+                         </Record>
+                    </Collection>
+                </Annotation>
+                <!--Category Object Page-->
+                <Annotation Term="UI.HeaderInfo">
+                    <Record Type="UI.HeaderInfoType">
+                        <PropertyValue Property="Description">
+                            <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="ID"/>
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="ImageUrl" String="https:///"/>
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="Name"/>
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="TypeName" String="Category Info"/>
+                        <PropertyValue Property="TypeNamePlural" String="Category Info"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="category"  >
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data" >
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Category ID"/>
+                                    <PropertyValue Property="Value" Path="ID"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Category Name"/>
+                                    <PropertyValue Property="Value" Path="Name"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Category"/>
+                            <PropertyValue Property="ID" String="categoryItem"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#category"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Products"/>
+                            <PropertyValue Property="ID" String="productItems"/>
+                            <PropertyValue Property="Target" AnnotationPath="Products/@UI.LineItem"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <!--Product -->
+            <Annotations Target="ProductService.Products">
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                         <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Product ID"/>
+                            <PropertyValue Property="Value" Path="ID"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Product Name"/>
+                            <PropertyValue Property="Value" Path="Name"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Price"/>
+                            <PropertyValue Property="Value" Path="Price"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Rating"/>
+                            <PropertyValue Property="Value" Path="Rating"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="ReleaseDate"/>
+                            <PropertyValue Property="Value" Path="ReleaseDate"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="DiscontinuedDate"/>
+                            <PropertyValue Property="Value" Path="DiscontinuedDate"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Description"/>
+                            <PropertyValue Property="Value" Path="Description"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="productItem"  >
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data" >
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Product ID"/>
+                                    <PropertyValue Property="Value" Path="ID"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Product Name"/>
+                                    <PropertyValue Property="Value" Path="Name"/>
+                                </Record>
+                                 <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Price"/>
+                                    <PropertyValue Property="Value" Path="Price"/>
+                                </Record>
+                                 <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Rating"/>
+                                    <PropertyValue Property="Value" Path="Rating"/>
+                                </Record>
+                                 <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="ReleaseDate"/>
+                                    <PropertyValue Property="Value" Path="ReleaseDate"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="DiscontinuedDate"/>
+                                    <PropertyValue Property="Value" Path="DiscontinuedDate"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Description"/>
+                                    <PropertyValue Property="Value" Path="Description"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Product"/>
+                            <PropertyValue Property="ID" String="proItem"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#productItem"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
