@@ -1,0 +1,30 @@
+_schema-version: "3.1"
+ID: products
+description: A simple CAP project.
+version: 1.0.0
+modules:
+- name: products-srv
+  type: nodejs
+  path: gen/srv
+  provides:
+  - name: srv-api
+    properties:
+      srv-url: ${default-url}
+  parameters:
+    buildpack: nodejs_buildpack
+- name: products-db-deployer
+  type: hdb
+  path: gen/db
+  requires:
+  - name: products-db
+  parameters:
+    buildpack: nodejs_buildpack
+
+resources:
+- name: products-db
+  type: com.sap.xs.hdi-container
+  parameters:
+    service: hanatrial
+    service-plan: hdi-shared
+  properties:
+    hdi-service-name: ${service-name}
